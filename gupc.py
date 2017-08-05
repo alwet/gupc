@@ -128,7 +128,7 @@ def muti_thread(bg_code,max_threads):
 		threads.append(t)
 	for ciuu in range(max_threads):
 		threads[ciuu].start() 
-		#sleep(random.randrange(1,200)/100.0)
+		sleep(random.randrange(0,200)/100.0)
 	for ciuu in range(max_threads):
 		print "waitting %d thread"%ciuu
 		threads[ciuu].join()
