@@ -15,11 +15,11 @@ def getHtml(url):
 	try:
 		page = urllib2.urlopen(url,timeout=60+30)
 	except urllib2.HTTPError, e:
-		print "sstal:%s"%url
+		print url,e
 		#raise e
 		return '0'
-	except :                                    #其它异常
-		print "debug" 
+	except Exception, e:                                    #其它异常
+		print url,e 
 		return '0'
 	#sleep(random.randrange(100,400)/100.0+3)
 	html = page.read()
