@@ -12,15 +12,21 @@ import random
 import math
 
 def getHtml(url):
-	try:
-		page = urllib2.urlopen(url,timeout=60+30)
-	except urllib2.HTTPError, e:
-		print url,e
-		#raise e
-		return '0'
-	except Exception, e:                                    #其它异常
-		print url,e 
-		return '0'
+	attempts = 0
+	success = False
+	while attempts < 3 and not success:
+		try:
+			page = urllib2.urlopen(url,timeout=60+30)
+			success = True
+		except urllib2.HTTPError, e:
+			print url,e,'retrun'
+			#raise e
+			return '0'
+		except Exception, e:                                    #其它异常
+			print url,e,'++',attempts 
+			attempts += 1
+			if attempts==3:
+				return '0'
 	#sleep(random.randrange(100,400)/100.0+3)
 	html = page.read()
 	print url
