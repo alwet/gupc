@@ -30,13 +30,13 @@ r:
 	shutdown;
 
 g:
-	cd gupc_data;rm -rf *;
-	python ../../python_sp/gupc/gupc.py 0 220 ;
-	python ../../python_sp/gupc/gupc.py 300000 70;
-	python ../../python_sp/gupc/gupc.py 600000 380;
-	perl gupc.pl csv;
-	cp sum.csv sum_$(file_date).csv;
-	perl send_mail.pl sum_$(file_date).csv;
-	rm sum_$(file_date).csv;
+	cd ../../../perl_code/gupc/gupc_data;rm -rf *;
+	python gupc.py 0 220 ;
+	python gupc.py 300000 70;
+	python gupc.py 600000 380;
+	cd ../../../perl_code/gupc;perl gupc.pl csv; \
+	cp sum.csv sum_$(file_date).csv;\
+	perl send_mail.pl sum_$(file_date).csv;\
+	rm sum_$(file_date).csv;\
 	shutdown;
 

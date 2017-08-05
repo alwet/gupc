@@ -97,7 +97,7 @@ def get_value(id):
 	return [id,name,'%.6f'%(price/xiuimzguubyi/math.sqrt(lirvtsbi)),str(price),str(ud),str(xiuimzguubyi),str(lirvtsbi)];
 def store_value(self,begin,end,f_name):
 	print begin,end,f_name;
-	f_name_str='../../perl_code/gupc/gupc_data/'+"%06d"%(f_name)+'.csv'
+	f_name_str='../../../perl_code/gupc/gupc_data/'+"%06d"%(f_name)+'.csv'
 	#f_name_str='./'+"%06d"%(f_name)+'.csv'
 	file_object = open(f_name_str, 'w')
 	#for i in range(begin,end):
