@@ -7,7 +7,6 @@ import urllib
 import urllib2
 import threading
 import multiprocessing
-import sys
 import random
 import math
 
@@ -75,6 +74,13 @@ def get_value(id):
 			return '0'
 	else:
 		return '0'
+	reg=r'行业排名：(\S*)</h2>'
+	mm = re.search(reg,a) 
+	if mm :
+		hhye=mm.groups()[0]
+	else:
+		print 'what the fuck'
+		sys.exit()
 	reg=r'(\S+?)\(%s\)深度F9 V1.0 '%id
 	mm=re.search(reg,a)
 	if mm:
@@ -100,7 +106,7 @@ def get_value(id):
 	if (xiuimzguubyi==0 or lirvtsbi==0):
 		return '0'
 	#return [id,name,'%.6f'%(price/xiuimzguubyi/lirvtsbi),str(price),str(ud),str(xiuimzguubyi),str(lirvtsbi)];
-	return [id,name,'%.6f'%(price/xiuimzguubyi/math.sqrt(lirvtsbi)),str(price),str(ud),str(xiuimzguubyi),str(lirvtsbi)];
+	return [id,name,'%.6f'%(price/xiuimzguubyi/math.sqrt(lirvtsbi)),str(price),str(ud),str(xiuimzguubyi),str(lirvtsbi),hhye];
 def store_value(self,begin,end,f_name):
 	print begin,end,f_name;
 	f_name_str='../../../perl_code/gupc/gupc_data/'+"%06d"%(f_name)+'.csv'
