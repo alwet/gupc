@@ -77,7 +77,10 @@ def get_value(id):
 	reg=r'行业排名：(\S*)</h2>'
 	mm = re.search(reg,a) 
 	if mm :
-		hhye=mm.groups()[0]
+		if(mm.groups()[0]):
+			hhye=mm.groups()[0]
+		else:
+			hhye='未知行业'
 	else:
 		print 'what the fuck'
 		sys.exit()
@@ -157,7 +160,7 @@ def muti_process(bg_code,max_threads):
 		
 
 if __name__ == "__main__" :
-	#a=store_value(3,600000,600100,600000)
+	#a=store_value(3,300685,300685,600000)
 	muti_thread(int(sys.argv[1]),int(sys.argv[2]))
 	#muti_process(int(sys.argv[1]),int(sys.argv[2]))
 	#print a
